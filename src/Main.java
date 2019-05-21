@@ -3,7 +3,11 @@ import orderAlgorithms.InsertionSort;
 import orderAlgorithms.MergeSort;
 import orderAlgorithms.QuickSort;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     /*Algorithms:
@@ -13,47 +17,57 @@ public class Main {
     Hybrid: Quick e Heap */
     public static void main(String args[]) {
 
-        int[] array;
-        int n = 1;
-
-        for (int i = 0; i < n; i++) {
-            array = generateArray(10, 0, 30000);
-            printArray(array);
-
-            long avg = 0;
-
-//            InsertionSort.runInsertionSort(array, avg);
-
-//            QuickSort.runQuickSort(array, avg);
-//
-//            HeapSort.runHeapSort(array, avg);
-//
-//            MergeSort.runMergeSort(array, avg);
-
-//            long startTime3 = System.nanoTime();
-//            QuickSort.quickSort(array3, 0, array3.length - 1);
-//            long endTime3 = System.nanoTime();
-//            long timeElapsed3 = endTime3 - startTime3;
-//            avg3 = avg3 + timeElapsed3;
-//            print(timeElapsed3 + "\n");
-//
-//            long startTime1 = System.nanoTime();
-//            MergeSort.mergeSort(array1, 0, array1.length - 1);
-//            long endTime1 = System.nanoTime();
-//            long timeElapsed1 = endTime1 - startTime1;
-//            avg1 = avg1 + timeElapsed1;
-////
-//            long startTime2 = System.nanoTime();
-//            HeapSort.heapSort(array2, array2.length);
-//            long endTime2 = System.nanoTime();
-//            long timeElapsed2 = endTime2 - startTime2;
-//            avg2 = avg2 + timeElapsed2;
-            print("\n");
-            printArray(array);
+        Scanner scanner = new Scanner(System.in);
+        print("Choose order Algorithm:\n");
+        print("0 - InsertionSort\n");
+        print("1 - QuickSort\n");
+        print("2 - HeapSort\n");
+        print("3 - MergeSort\n");
+        print("Type your chose: ");
+        int orderAlgorithm = scanner.nextInt();
+        print("Define the array size: ");
+        int size = scanner.nextInt();
+        print("Define the loop size: ");
+        int n = scanner.nextInt();
+        try {
+            runOrderAlgorithms(orderAlgorithm, size, n);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-//        print("\nAVG Merge Sort: " + avg1 / n);
-//        print("\nAVG Heap Sort: " + avg2 / n);
-//        print("\nAVG Quick Sort: " + avg3 / n + "\n");
+
+    }
+
+    private static void runOrderAlgorithms(int orderAlgorithm, int size, int n) throws IOException {
+        int[] array;
+
+        BufferedWriter writer = null;
+        for (int i = 0; i < n; i++) {
+            array = generateArray(size, 0, 30000);
+//            printArray(array);
+            long avg = 0;
+            if (orderAlgorithm == 0) {
+//                writer = new BufferedWriter(new FileWriter("time_insertion_sort"));
+                print(InsertionSort.runInsertionSort(array, avg) + "\n");
+            }
+            if (orderAlgorithm == 1) {
+//                writer = new BufferedWriter(new FileWriter("time_quick_sort_" + size + "_" + n));
+                print(QuickSort.runQuickSort(array, avg) + "\n");
+            }
+            if (orderAlgorithm == 2) {
+//                writer = new BufferedWriter(new FileWriter("time_heap_sort_" + size + "_" + n));
+                print(HeapSort.runHeapSort(array, avg) + "\n");
+            }
+            if (orderAlgorithm == 3) {
+//                writer = new BufferedWriter(new FileWriter("time_merge_sort_" + size + "_" + n));
+                print(MergeSort.runMergeSort(array, avg) + "\n");
+            }
+
+//           print("\n");
+//            printArray(array);
+        }
+//        writer.close();
+
+
     }
 
     private static int[] generateArray(int size, int minValue, int maxValue) {

@@ -62,13 +62,13 @@ public class MergeSort {
         }
     }
 
-    public static void runMergeSort(int[] array, long avg) {
+    public static long runMergeSort(int[] array, long avg) {
         long startTime1 = System.nanoTime();
         MergeSort.mergeSort(array, 0, array.length - 1);
         long endTime1 = System.nanoTime();
         long timeElapsed1 = endTime1 - startTime1;
         avg = avg + timeElapsed1;
-        System.out.println(timeElapsed1 + "\n");
+       return timeElapsed1;
     }
 
 }

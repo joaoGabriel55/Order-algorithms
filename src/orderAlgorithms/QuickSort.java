@@ -28,13 +28,13 @@ public class QuickSort {
         }
     }
 
-    public static void runQuickSort(int[] array, long avg) {
+    public static long runQuickSort(int[] array, long avg) {
         long startTime3 = System.nanoTime();
         QuickSort.quickSort(array, 0, array.length - 1);
         long endTime3 = System.nanoTime();
         long timeElapsed3 = endTime3 - startTime3;
         avg = avg + timeElapsed3;
-        System.out.println(timeElapsed3 + "\n");
+        return timeElapsed3;
     }
 
 }

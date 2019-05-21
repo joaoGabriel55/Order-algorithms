@@ -16,12 +16,12 @@ public class InsertionSort {
         }
     }
 
-    public static void runInsertionSort(int[] array, long avg) {
+    public static long runInsertionSort(int[] array, long avg) {
         long startTime3 = System.nanoTime();
         sort(array);
         long endTime3 = System.nanoTime();
         long timeElapsed3 = endTime3 - startTime3;
-        avg = avg + timeElapsed3;
+        return timeElapsed3;
 
     }
 

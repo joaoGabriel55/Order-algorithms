@@ -49,11 +49,12 @@ public class HeapSort {
         }
     }
 
-    public static void runHeapSort(int[] array, long avg) {
+    public static long runHeapSort(int[] array, long avg) {
         long startTime2 = System.nanoTime();
         HeapSort.heapSort(array, array.length);
         long endTime2 = System.nanoTime();
         long timeElapsed2 = endTime2 - startTime2;
         avg = avg + timeElapsed2;
+        return timeElapsed2;
     }
 }
