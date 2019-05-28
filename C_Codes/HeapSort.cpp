@@ -43,7 +43,7 @@ void heapSort(int array[], int size) {
 }
 
 void genereateArray(int vetor[]){
-   	FILE *f = fopen("Goiaba.txt", "r");
+   	FILE *f = fopen("NumbersSamples.txt", "r");
 	
 	for (int i = 0; i < n; ++i) {
 		fscanf(f, "%d", &vetor[i]);
