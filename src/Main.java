@@ -3,9 +3,7 @@ import orderAlgorithms.InsertionSort;
 import orderAlgorithms.MergeSort;
 import orderAlgorithms.QuickSort;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,6 +21,8 @@ public class Main {
         print("1 - QuickSort\n");
         print("2 - HeapSort\n");
         print("3 - MergeSort\n");
+        print("4 - HybridQuickSort\n");
+        print("5 - HybridMergeSort\n");
         print("Type your chose: ");
         int orderAlgorithm = scanner.nextInt();
         print("Define the array size: ");
@@ -42,26 +42,31 @@ public class Main {
 
         BufferedWriter writer = null;
         for (int i = 0; i < n; i++) {
-            array = generateArray(size, 0, 30000);
+            array = generateArray(size);
 //            printArray(array);
             long avg = 0;
-            if (orderAlgorithm == 0) {
-//                writer = new BufferedWriter(new FileWriter("time_insertion_sort"));
-                print(InsertionSort.runInsertionSort(array, avg) + "\n");
-            }
-            if (orderAlgorithm == 1) {
-//                writer = new BufferedWriter(new FileWriter("time_quick_sort_" + size + "_" + n));
-                print(QuickSort.runQuickSort(array, avg) + "\n");
-            }
-            if (orderAlgorithm == 2) {
-//                writer = new BufferedWriter(new FileWriter("time_heap_sort_" + size + "_" + n));
-                print(HeapSort.runHeapSort(array, avg) + "\n");
-            }
-            if (orderAlgorithm == 3) {
-//                writer = new BufferedWriter(new FileWriter("time_merge_sort_" + size + "_" + n));
-                print(MergeSort.runMergeSort(array, avg) + "\n");
-            }
+            switch (orderAlgorithm) {
+                case 0:
+                    print(InsertionSort.runInsertionSort(array, avg) + "\n");
+                    break;
+                case 1:
+                    print(QuickSort.runQuickSort(array, avg) + "\n");
+                    break;
+                case 2:
+                    print(HeapSort.runHeapSort(array, avg) + "\n");
+                    break;
+                case 3:
+                    print(MergeSort.runMergeSort(array, avg) + "\n");
+                    break;
+                case 4:
+                    print(QuickSort.runHybridQuickSort(array, avg) + "\n");
 
+                    break;
+                case 5:
+                    print(MergeSort.runHybridMergeSort(array, avg) + "\n");
+//                    printArray(array);
+                    break;
+            }
 //           print("\n");
 //            printArray(array);
         }
@@ -70,10 +75,17 @@ public class Main {
 
     }
 
-    private static int[] generateArray(int size, int minValue, int maxValue) {
+    private static int[] generateArray(int size) {
         int[] array = new int[size];
-        for (int i = 0; i < size; i++) {
-            array[i] = generateRandomIntIntRange(minValue, maxValue);
+        try {
+            FileInputStream inputStream = new FileInputStream("C:\\Users\\Quaresma\\Documents\\Drive\\Academico\\Mestrado\\2019.1\\Estrutura_de_dados\\Projeto_unity_2\\Project\\src\\NumbersSample.txt");
+            Scanner in = new Scanner(inputStream);
+            for (int i = 0; in.hasNextLine() && i < size; i++) {
+                int num = Integer.parseInt(in.nextLine());
+                array[i] = num;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         return array;
     }
