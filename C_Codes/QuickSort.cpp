@@ -57,7 +57,7 @@ void quickSort(int array[], int p, int r) {
 }
 
 void genereateArray(int vetor[]){
-   FILE *f = fopen("Goiaba.txt", "r");
+   FILE *f = fopen("NumbersSamples.txt", "r");
 	
 	for (int i = 0; i < n; ++i) {
       fscanf(f, "%d", &vetor[i]);
@@ -76,6 +76,11 @@ int main() {
 	printf("Quick Sort\n\n");
 	srand( (unsigned)time( NULL ) );
 	
+	int op;
+	
+	printf("Digite [1] para o QuickSort Normal ou [2] para o QuickSort Hybrid:\n");
+	scanf("%d", &op);
+	printf("%d Selecionado\n\n", op);
 	clock_t t;
 
 	int key = 0;
@@ -85,9 +90,17 @@ int main() {
 		genereateArray(vetor);
 		//printArray(vetor);
 		//hybridQuickSort(vetor, 0, n - 1);
-		t = clock();
-		hybridQuickSort(vetor, 0, n - 1);
-		t = clock() - t;
+		if(op == 1){
+			t = clock();
+			quickSort(vetor, 0, n - 1);
+			t = clock() - t;
+		}
+		if(op == 2){
+			t = clock();
+			hybridQuickSort(vetor, 0, n - 1);
+			t = clock() - t;
+		}
+		
 		float time_taken = ((float)t)/CLOCKS_PER_SEC;
 		printf("%f\n", time_taken); 
 		//printArray(vetor);

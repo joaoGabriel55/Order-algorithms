@@ -103,6 +103,10 @@ void printArray(int arr[])  {
 int main() {
 	printf("Merge Sort\n\n");
 	srand( (unsigned)time( NULL ) );
+	int op;
+	printf("Digite [1] para o MergeSort Normal ou [2] para o MergeSort Hybrid:\n");
+	scanf("%d", &op);
+	printf("%d Selecionado\n\n", op);
 	
 	clock_t t;
 
@@ -112,9 +116,18 @@ int main() {
 		int vetor[n];
 		genereateArray(vetor);
 		//printArray(vetor);
-		t = clock();
-		hybridMergeSort(vetor, 0, n - 1);
-		t = clock() - t;
+		if(op == 1){
+			t = clock();
+			mergeSort(vetor, 0, n - 1);
+			t = clock() - t;	
+		}
+		
+		if(op == 2){
+			t = clock();
+			hybridMergeSort(vetor, 0, n - 1);
+			t = clock() - t;
+		}
+		
 		float time_taken = ((float)t)/CLOCKS_PER_SEC;
 		printf("%f\n", time_taken); 
 		//printArray(vetor);
