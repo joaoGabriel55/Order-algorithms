@@ -41,7 +41,7 @@ int main() {
 	clock_t t;
 	
 	int count = 0;
-	while(count <= 100){
+	while(count <= 200){
 		int vetor[n];
 		genereateArray(vetor);
 		//printArray(vetor);

@@ -83,7 +83,7 @@ int main() {
 
 	int key = 0;
 	int count = 0;
-	while(count <= 100) { 
+	while(count <= 200) { 
 		int vetor[n];
 		genereateArray(vetor);
 		//printArray(vetor);
