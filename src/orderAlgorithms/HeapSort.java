@@ -39,7 +39,6 @@ public class HeapSort {
     }
 
     public static void heapSort(int[] array, int n) {
-//        int heapSize = array.length;
         buildMaxHeap(array, n);
         for (int i = n - 1; i >= 0; i--) {
             int aux = array[0];

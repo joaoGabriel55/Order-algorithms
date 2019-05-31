@@ -24,9 +24,7 @@ public class MergeSort {
         for (j = 0; j < n2; j++)
             right[j] = array[q + j + 1];
 
-        i = 0;
-        j = 0;
-        k = p;
+        i = 0, j = 0, k = p;
 
         while (j < n2 && i < n1) {
             if (left[i] <= right[j]) {

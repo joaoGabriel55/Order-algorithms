@@ -37,10 +37,8 @@ void insertionSort (int vetor[],int low, int high){
 void hybridQuickSort(int array[], int p, int r) {
     if (p < r) {
     	if(r - p < 10){
-//			printf("Insertion\n");
 			insertionSort(array, p, r);
 		} else {
-//			printf("Quick\n");
 			int q = partition(array, p, r);
 	        hybridQuickSort(array, p, q - 1);
 	        hybridQuickSort(array, q + 1, r);	

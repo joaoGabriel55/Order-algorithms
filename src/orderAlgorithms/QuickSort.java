@@ -34,14 +34,6 @@ public class QuickSort {
         }
     }
 
-    public static void quickSort(int[] array, int p, int r) {
-        if (p < r) {
-            int q = partition(array, p, r);
-            quickSort(array, p, q - 1);
-            quickSort(array, q + 1, r);
-        }
-    }
-
     public static void hybridQuickSort(int[] array, int p, int r) {
         if (p < r) {
             if (r - p < 10) {
@@ -51,6 +43,14 @@ public class QuickSort {
                 hybridQuickSort(array, p, q - 1);
                 hybridQuickSort(array, q + 1, r);
             }
+        }
+    }
+
+    public static void quickSort(int[] array, int p, int r) {
+        if (p < r) {
+            int q = partition(array, p, r);
+            quickSort(array, p, q - 1);
+            quickSort(array, q + 1, r);
         }
     }
 

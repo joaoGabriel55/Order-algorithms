@@ -7,11 +7,11 @@ void sort (int vetor[]){
 	int key = 0;
 	for(int j = 0; j < n; j++) {
 		int i = 0;
-		key = vetor[j]; // 4
-		i = j - 1; //2 - 1 = 1
-		while(i >= 0 && vetor[i] > key) {//V - V
+		key = vetor[j];
+		i = j - 1;
+		while(i >= 0 && vetor[i] > key) {
 			vetor[i + 1] = vetor[i];
-			i = i - 1; // 0
+			i = i - 1;
 		}
 		vetor[i + 1] = key;
 	}

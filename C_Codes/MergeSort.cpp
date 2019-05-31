@@ -19,9 +19,7 @@ void merge(int array[], int p, int q, int r) {
     for (j = 0; j < n2; j++)
         right[j] = array[q + j + 1];
 
-    i = 0;
-    j = 0;
-    k = p;
+    i = 0, j = 0, k = p;
 
     while (j < n2 && i < n1) {
         if (left[i] <= right[j]) {
@@ -52,11 +50,11 @@ void insertionSort(int vetor[],int low, int high){
 	int key = 0;
 	for(int j = low+1; j <= high; j++) {
 		int i = 0;
-		key = vetor[j]; // 4
-		i = j - 1; //2 - 1 = 1
-		while(i >= 0 && vetor[i] > key) {//V - V
+		key = vetor[j];
+		i = j - 1; 
+		while(i >= 0 && vetor[i] > key) {
 			vetor[i + 1] = vetor[i];
-			i = i - 1; // 0
+			i = i - 1;
 		}
 		vetor[i + 1] = key;
 	}
